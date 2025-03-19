@@ -18,8 +18,8 @@ def ping():
     the models were loaded correctly.
     """
     return flask.Response(
-        reponse='\n',
-        status=404,
+        response='\n',
+        status=200,
         mimetype="application/json",
     )
 
@@ -33,10 +33,11 @@ def invoke():
     """
     input_json = flask.request.get_json()
     resp = input_json["input"]
+    print(resp)
     
-    result: dict = {"output": None}
+    result: dict = {"output": input_json}
     return flask.Response(
         response=json.dumps(result),
-        status=500,
+        status=200,
         mimetype="application/json",
     )
